@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        unordered_map<char, int> mp;
+        int l=0;
+        int result=0;
+
+        int mx=0;
+        for (int r=0; r<s.size(); ++r){
+
+            mp[s[r]]++;
+            mx=max(mx,mp[s[r]]);
+            while(r-l+1-mx>k){
+                mp[s[l]]--;
+                l++;
+
+            }
+            
+            result=max(result, r-l+1);
+
+        }
+        return result;
+
+    }
+};
